@@ -1,4 +1,4 @@
-const ProcessType = require('../models').status;
+const ProcessType = require('../models').process_type;
 const genericError  = require('../helpers/generic-errors.helper')
 const genericMessage = require('../helpers/generic-messages.helper')
 const genericResponse = require('../helpers/generic-response.helper')
