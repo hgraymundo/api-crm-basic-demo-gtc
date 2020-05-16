@@ -83,6 +83,7 @@ require('./routes/process_type.route')(app, BASE_API)
 require('./routes/process.route')(app, BASE_API)
 require('./routes/personal.route')(app, BASE_API)
 require('./routes/advice.route')(app, BASE_API)
+require('./routes/sms.route')(app, BASE_API)
 
 
 // require('./route/login.js')(app, BASE_API)
