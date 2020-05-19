@@ -31,6 +31,12 @@ db.process_status = require('./process_status.model.js')(sequelize, Sequelize);
 db.personal = require('./personal.model.js')(sequelize, Sequelize);
 db.advice = require('./advice.model.js')(sequelize, Sequelize);
 
+db.publication = require('./publication.model.js')(sequelize, Sequelize);
+db.fb_comment = require('./fb_comment.model.js')(sequelize, Sequelize);
+
+db.publication.hasMany(db.fb_comment, { foreignKey: 'publication_id', sourceKey: 'uuid'});
+db.fb_comment.belongsTo(db.publication, { foreignKey: 'publication_id', targetKey: 'uuid'});
+
 db.customer.hasMany(db.process, { foreignKey: 'customer_id', sourceKey: 'uuid'});
 db.process.belongsTo(db.customer, { foreignKey: 'customer_id', targetKey: 'uuid'});
 db.status.hasMany(db.process, { foreignKey: 'status_id', sourceKey: 'uuid'});

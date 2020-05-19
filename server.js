@@ -85,6 +85,8 @@ require('./routes/personal.route')(app, BASE_API)
 require('./routes/advice.route')(app, BASE_API)
 require('./routes/sms.route')(app, BASE_API)
 require('./routes/email.route')(app, BASE_API)
+require('./routes/publication.route')(app, BASE_API)
+require('./routes/fb_comment.route')(app, BASE_API)
 
 //run server
 app.listen(env.PORT, ()=> {
