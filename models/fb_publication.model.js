@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-    const publication= sequelize.define( 'publication', {
+    const fb_publication= sequelize.define( 'fb_publication', {
         uuid: {
             type: Sequelize.UUID,
             defaultValue: Sequelize.UUIDV4,
@@ -39,5 +39,5 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         }
     })
-    return publication
+    return fb_publication
 }

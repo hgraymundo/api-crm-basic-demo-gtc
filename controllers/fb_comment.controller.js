@@ -13,7 +13,7 @@ exports.create = async (req, res) => {
 }
 exports.getAll = async (req, res) => {
   try {
-    let r = await FBCommentService.getAll()
+    let r = await FBCommentService.getAll(req.params.id)
     res.status(r.CODE).json(r)
   }
   catch(error) {

@@ -76,17 +76,20 @@ app.use(passport.session());
 
 // ROUTES
 const BASE_API = "/api/v1"
-require('./routes/signup.route')(app, BASE_API)
-require('./routes/customer.route')(app, BASE_API)
-require('./routes/status.route')(app, BASE_API)
-require('./routes/process_type.route')(app, BASE_API)
-require('./routes/process.route')(app, BASE_API)
-require('./routes/personal.route')(app, BASE_API)
-require('./routes/advice.route')(app, BASE_API)
-require('./routes/sms.route')(app, BASE_API)
-require('./routes/email.route')(app, BASE_API)
-require('./routes/publication.route')(app, BASE_API)
+// require('./routes/signup.route')(app, BASE_API)
+// require('./routes/customer.route')(app, BASE_API)
+// require('./routes/status.route')(app, BASE_API)
+// require('./routes/process_type.route')(app, BASE_API)
+// require('./routes/process.route')(app, BASE_API)
+// require('./routes/personal.route')(app, BASE_API)
+// require('./routes/advice.route')(app, BASE_API)
+// require('./routes/sms.route')(app, BASE_API)
+// require('./routes/email.route')(app, BASE_API)
+require('./routes/account.route')(app, BASE_API)
+require('./routes/fb_publication.route')(app, BASE_API)
 require('./routes/fb_comment.route')(app, BASE_API)
+require('./routes/fb_account.route')(app, BASE_API)
+require('./routes/pub_comment.route')(app, BASE_API)
 
 //run server
 app.listen(env.PORT, ()=> {

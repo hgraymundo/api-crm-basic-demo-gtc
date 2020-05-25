@@ -1,4 +1,5 @@
-const Publication = require('../models').publication;
+const PubComment = require('../models').pub_comment;
+const FBPublication = require('../models').fb_publication;
 const genericError  = require('../helpers/generic-errors.helper')
 const genericMessage = require('../helpers/generic-messages.helper')
 const genericResponse = require('../helpers/generic-response.helper')
@@ -6,9 +7,9 @@ const genericResponse = require('../helpers/generic-response.helper')
 // TODO: Agregar sanitizadores y escapes de peticiones.
 exports.create = async (data) => {
     return new Promise( async (resolve, reject) =>{
-        let publication = new Publication(data)
+        let pub_comment = new PubComment(data)
         try {
-            let c = await publication.save()
+            let c = await pub_comment.save()
             let r = genericResponse.success(genericMessage.success.CODE, genericMessage.success.STATUS, genericMessage.success.MESSAGE, c)
             resolve(r)
         }
@@ -21,10 +22,16 @@ exports.create = async (data) => {
     })
 }
 
-exports.getAll = async (data) => {
+exports.getAll = async (_idPublication) => {
     return new Promise( async (resolve, reject) =>{
         try {
-            let p = await Publication.findAll()
+            // let p = await PubComment.findAll({})
+            let p = await FBPublication.findAll( 
+                { where: { uuid: _idPublication },
+                include: [
+                    { model: PubComment }
+                ]
+            })
             let r = genericResponse.success(genericMessage.success.CODE, genericMessage.success.STATUS, genericMessage.success.MESSAGE, p)
             resolve(r)
         }
@@ -36,4 +43,3 @@ exports.getAll = async (data) => {
         }
     })
 }
-

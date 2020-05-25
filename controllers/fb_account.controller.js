@@ -1,9 +1,9 @@
-const FBpublicationService = require("../services/fb_publication.service")
+const FBAccountService = require("../services/fb_account.service")
 
 exports.create = async (req, res) => {
    let data = req.body
    try {
-     let r = await FBpublicationService.create(data)
+     let r = await FBAccountService.create(data)
      res.status(r.CODE).json(r)
    }
    catch(error) {
@@ -14,7 +14,7 @@ exports.create = async (req, res) => {
 
 exports.getAll = async (req, res) => {
   try {
-    let r = await FBpublicationService.getAll(req.params.id)
+    let r = await FBAccountService.getAll()
     res.status(r.CODE).json(r)
   }
   catch(error) {

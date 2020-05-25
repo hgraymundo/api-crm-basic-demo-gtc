@@ -1,13 +1,13 @@
 module.exports = (sequelize, Sequelize) => {
-    const fb_comment = sequelize.define( 'fb_comment', {
+    const fb_account = sequelize.define( 'fb_account', {
         uuid: {
             type: Sequelize.UUID,
             defaultValue: Sequelize.UUIDV4,
             primaryKey: true,
         },
-        text: {
-            type: Sequelize.TEXT
+        user: {
+            type: Sequelize.STRING
         }
     })
-    return fb_comment
+    return fb_account
 }
