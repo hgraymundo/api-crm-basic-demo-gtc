@@ -2,7 +2,7 @@ const publicationController = require("../controllers/publication.controller")
 
 module.exports = function(app, base_api) {
   app.post(base_api + "/fb_publication", publicationController.create);
-  app.get(base_api + "/fb_publication/:id", publicationController.getAll);
+  app.get(base_api + "/fb_publication/:id", publicationController.getById);
 }
 
 // {

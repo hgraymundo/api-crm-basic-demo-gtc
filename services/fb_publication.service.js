@@ -1,4 +1,6 @@
 const FBPublication = require('../models').fb_publication;
+const FBAccount = require('../models').fb_account;
+
 const genericError  = require('../helpers/generic-errors.helper')
 const genericMessage = require('../helpers/generic-messages.helper')
 const genericResponse = require('../helpers/generic-response.helper')
@@ -21,10 +23,10 @@ exports.create = async (data) => {
     })
 }
 
-exports.getAll = async (_id) => {
+exports.getById = async (_id) => {
     return new Promise( async (resolve, reject) =>{
         try {
-            let p = await FBPublication.findAll({ where: { fb_account_id: _id } })
+            let p = await FBPublication.findOne({ where: { uuid: _id }, include: [ { model: FBAccount } ] })
             let r = genericResponse.success(genericMessage.success.CODE, genericMessage.success.STATUS, genericMessage.success.MESSAGE, p)
             resolve(r)
         }
@@ -36,4 +38,3 @@ exports.getAll = async (_id) => {
         }
     })
 }
-

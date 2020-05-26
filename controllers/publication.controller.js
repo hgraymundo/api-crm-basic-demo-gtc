@@ -12,9 +12,9 @@ exports.create = async (req, res) => {
    }
 }
 
-exports.getAll = async (req, res) => {
+exports.getById = async (req, res) => {
   try {
-    let r = await FBpublicationService.getAll(req.params.id)
+    let r = await FBpublicationService.getById(req.params.id)
     res.status(r.CODE).json(r)
   }
   catch(error) {
