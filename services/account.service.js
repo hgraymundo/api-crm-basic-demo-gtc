@@ -2,8 +2,6 @@ const Account = require('../models').account;
 const genericError  = require('../helpers/generic-errors.helper')
 const genericMessage = require('../helpers/generic-messages.helper')
 const genericResponse = require('../helpers/generic-response.helper')
-var CryptoJS = require("crypto-js");
-var SHA256 = require("crypto-js/sha256");
 
 // TODO: Agregar validaciones, a nivel de código, adicional a las validaciones de bd que ya están.
 // TODO: Agregar sanitizadores y escapes de peticiones.
