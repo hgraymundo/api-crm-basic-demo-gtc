@@ -24,9 +24,10 @@ exports.create = async (data) => {
 }
 
 exports.getById = async (_id) => {
+    console.log(_id);
     return new Promise( async (resolve, reject) =>{
         try {
-            let p = await FBPublication.findOne({ where: { uuid: _id }, include: [ { model: FBAccount } ] })
+            let p = await FBAccount.findOne({ where: { uuid: _id }, include: [ { model: FBPublication } ] })
             let r = genericResponse.success(genericMessage.success.CODE, genericMessage.success.STATUS, genericMessage.success.MESSAGE, p)
             resolve(r)
         }
