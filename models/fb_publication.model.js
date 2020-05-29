@@ -9,10 +9,10 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING, 
         },
         text: {
-            type: Sequelize.STRING, 
+            type: Sequelize.TEXT, 
         },
         post_text: {
-            type: Sequelize.STRING, 
+            type: Sequelize.TEXT, 
         },
         shared_text: {
             type: Sequelize.STRING

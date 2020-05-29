@@ -23,11 +23,35 @@ exports.create = async (data) => {
     })
 }
 
-exports.getAll = async (_idPublication) => {
+exports.getAll = async () => {
     return new Promise( async (resolve, reject) =>{
         try {
             // let p = await PubComment.findAll({})
-            let p = await FBPublication.findAll( 
+	    let p = await PubComment.findAll({ where: { status: 'CREADO' }, include: [ { model: FBPublication } ] })
+            //let p = await FBPublication.findAll( 
+             //   { where: { uuid: _idPublication },
+              //  include: [
+               //     { model: PubComment }
+               // ]
+            //})
+            let r = genericResponse.success(genericMessage.success.CODE, genericMessage.success.STATUS, genericMessage.success.MESSAGE, p)
+            resolve(r)
+        }
+        catch(error) {
+            console.log(error)
+            let err = await genericError.setErrors(error)
+            let e = genericResponse.error(genericMessage.error400.CODE, genericMessage.error400.STATUS, genericMessage.error400.MESSAGE, err)
+            reject(e)
+        }
+    })
+}
+
+
+exports.getAllBack = async (_idPublication) => {
+    return new Promise( async (resolve, reject) =>{
+        try {
+            // let p = await PubComment.findAll({})
+            let p = await FBPublication.findAll(
                 { where: { uuid: _idPublication },
                 include: [
                     { model: PubComment }
@@ -44,6 +68,9 @@ exports.getAll = async (_idPublication) => {
         }
     })
 }
+
+
+
 
 exports.updateStatus = async (_idComment, _status) => {
     return new Promise( async (resolve, reject) =>{

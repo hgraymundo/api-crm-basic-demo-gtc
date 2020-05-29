@@ -15,7 +15,7 @@ exports.create = async (req, res) => {
 
 exports.getAll = async (req, res) => {
   try {
-    let r = await pubCommentService.getAll(req.params.id)
+    let r = await pubCommentService.getAll()
     res.status(r.CODE).json(r)
   }
   catch(error) {
